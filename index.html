@@ -113,6 +113,15 @@ width:100%;
 font-size:14px;
 }
 
+/* Bunny Cursor */
+#bunny{
+position:fixed;
+font-size:35px;
+pointer-events:none;
+z-index:9999;
+transition:transform 0.08s linear;
+}
+
 </style>
 </head>
 
@@ -182,6 +191,9 @@ one thing will never change —
 </div>
 </div>
 
+<!-- Bunny Cursor -->
+<div id="bunny">🐰</div>
+
 <script>
 
 const text = `My Cutuuuu Rabbit...
@@ -208,7 +220,6 @@ loving you,
 missing you,
 and trying to make you smile again...
 
-
 until the day you finally say:
 
 "Okay idiot... I forgive you, my Singhania." ❤️`;
@@ -228,6 +239,9 @@ typeWriter();
 function forgive(){
 
 document.getElementById("popup").style.display="flex";
+
+/* Bunny becomes love bunny */
+document.getElementById("bunny").innerHTML="🐰❤️";
 
 for(let i=0;i<40;i++){
 setTimeout(createBigHeart,i*80);
@@ -297,8 +311,15 @@ heart.remove();
 
 }
 
+/* Bunny follows cursor */
+const bunny = document.getElementById("bunny");
+
+document.addEventListener("mousemove", function(e){
+bunny.style.left = e.pageX + 10 + "px";
+bunny.style.top = e.pageY + 10 + "px";
+});
+
 </script>
 
 </body>
 </html>
-```
